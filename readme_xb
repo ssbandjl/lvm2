@@ -1,0 +1,12 @@
+libdm/dm-tools/dmsetup.c
+
+libdm/libdevmapper.h -> DM_DEVICE_TARGET_MSG -> 17
+dm_task_run(dmt)
+int dm_task_run(struct dm_task *dmt)
+  command = _cmd_data_v4[dmt->type].cmd -> static struct cmd_data _cmd_data_v4[] -> 17 -> {"message",	DM_TARGET_MSG,		{4, 2, 0}} -> 内核项目中 -> #define DM_TARGET_MSG	 _IOWR(DM_IOCTL, DM_TARGET_MSG_CMD, struct dm_ioctl)
+  if (!(dmi = _do_dm_ioctl(dmt, command, _ioctl_buffer_double_factor -> static struct dm_ioctl *_do_dm_ioctl
+    struct dm_ioctl *dmi
+    dmi = _flatten(dmt, buffer_repeat_count) -> 展平
+    r = ioctl(_control_fd, command, dmi) -> 转到内核处理
+  _udev_complete(dmt)
+
